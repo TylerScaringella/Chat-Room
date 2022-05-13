@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Chat Room</title>
+        <script src="js/script.js" defer></script>
+        <script src="https://unpkg.com/peerjs@1.3.2/dist/peerjs.min.js"></script>
+        <script src="/socket.io/socket.io.js"></script>
+        <script>
+            const code = <%= code %>
+            window.history.pushState('', '', `/${code}`)
+        </script>
+        <link rel="stylesheet" href="css/style.css">
+    </head>
+    <body>
+        <% if(locals.code) { %>
+            <div id="videos"></div>
+        <% } else { %>
+            <h4>Code not found!</h4>
+        <% } %>
+    </body>
+</html>
