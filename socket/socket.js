@@ -6,7 +6,7 @@ module.exports = (server) => {
     io.on('connection', socket => {
         socket.on('join-room', (code, userId) => {
             socket.join(code)
-            socket.broadcast.to('user-connected', {
+            socket.broadcast.to(code).emit('user-connected', {
                 userId: userId
             })
 
@@ -14,6 +14,7 @@ module.exports = (server) => {
 
             socket.on('disconnect', () => {
                 socket.broadcast.to(code).emit('user-disconnected', userId)
+                socketConnections.delete(userId)
             })
         })
     })
