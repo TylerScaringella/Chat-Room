@@ -2,10 +2,10 @@ const socket = io('/')
 const videos = document.getElementById('videos')
 
 const peer = new Peer({
-    host: 'localhost',
-    port: 9000,
-    key: 'peerjs',
-    path: '/peer'
+    host: 'cs-peer-server.herokuapp.com',
+    port: 443,
+    secure: true,
+    key: 'peerjs'
 })
 
 const myVideo = document.createElement('video')
