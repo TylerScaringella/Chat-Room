@@ -11,6 +11,8 @@ const peer = new Peer({
 const myVideo = document.createElement('video')
 myVideo.setAttribute('id', 'self')
 myVideo.muted = true
+myVideo.autoplay = true
+myVideo.controls = true
 let myStream
 
 const peers = {}
@@ -27,6 +29,8 @@ navigator.mediaDevices.getUserMedia({
 
         const video = document.createElement('video')
         video.setAttribute('id', call.peer)
+        video.controls = true
+        video.autoplay = true
 
         call.on('stream', userVideoStream => {
             addVideoStream(video, userVideoStream)
@@ -63,6 +67,8 @@ const connectToNewUser = (userId, stream) => {
     const call = peer.call(userId, stream)
     const video = document.createElement('video')
     video.setAttribute('id', userId)
+    video.autoplay = true
+    video.controls = true
 
     call.on('stream', userVideoStream => {
         addVideoStream(video, userVideoStream)
